@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Basic HTML Page</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Basic HTML Page</h1>
+    </header>
+    <form>
+      <input type="text" id="input">
+      <input type="button" id="addelement">
+      
+    </form>
+
+    
+    <ul id="homework">
+      <li></li>
+
+      
+    </ul>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf-8">
+    var socket = io();
+    add_button = document.getElementById("addelement")
+    text = document.getElementById("input")
+    add_button.addEventListener("click", () => {socket.emit("button_pressed", text.value)})
+     socket.on('connection', function() {
+       
+       
+     })
+    
+    socket.on('connect', function() {
+        socket.emit('my event', {data: navigator.userAgent});
+    });
+    socket.on('response', (data) =>{
+      console.log("hi")
+      
+      entry = document.createElement('li')
+      list = document.getElementById("homework")
+      entry.appendChild(document.createTextNode(data))
+      list.appendChild(entry)
+      
+      
+    })
+
+  </script>
+</body>
+</html>
